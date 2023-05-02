@@ -1,8 +1,13 @@
 import axios from '../axios';
 const userService = {
     
-    async handleLogin(email,password){
-        return await axios.post('/api/login', {email, password});
+    handleLogin(email,password){
+        return axios.post('/api/login', {email, password});
+    },
+
+    getAllUsers(id){
+        // template string : 
+        return axios.get(`/api/get-all-users?id=${id}`);
     }
 
 }
