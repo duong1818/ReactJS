@@ -1,44 +1,89 @@
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.btn-edit{
+  // background: orange;
+  outline: none;
+  border: none;
+  height: 25px;
+  width: 50px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+  color: orange;
+  &:hover{
+    background-color: transparent !important;
+    color: orange !important;
   }
-  
-  td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+}
+.btn-delete{
+  outline: none;
+  border: none;
+  height: 25px;
+  width: 50px;
+  border-radius: 3px;
+  cursor: pointer;
+  background: transparent;
+  color: red;
+  &:hover{
+    background-color: transparent !important;
+    color: red !important;
   }
-  
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-  .btn-edit{
-    // background: orange;
-    outline: none;
-    border: none;
-    height: 25px;
-    width: 50px;
-    border-radius: 3px;
-    cursor: pointer;
-    background: transparent;
-    color: orange;
-    &:hover{
-      background-color: transparent !important;
-      color: orange !important;
+}
+
+.modal-user-container{
+  .modal-header{
+    button {
+      background-color: transparent;
+      border: none;
+      color: white;
+      font-size: 25px;
+
     }
   }
-  .btn-delete{
-    outline: none;
-    border: none;
-    height: 25px;
-    width: 50px;
-    border-radius: 3px;
-    cursor: pointer;
-    background: transparent;
-    color: red;
-    &:hover{
-      background-color: transparent !important;
-      color: red !important;
+  .modal-user-body{
+    gap: 15px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .input-container{
+      width: 49%;
+      display: flex;
+      flex-direction: column;
+      &.max-width-input{
+        width: 100%;
+      }
+      &.width-select{
+        width: 20%;
+      }
+  
+      input {
+        border-radius: 3px;
+        border: 1px solid grey;
+        height:  30px;
+        outline: none;
+        padding: 10px;
+      }
+      select {
+        border-radius: 3px;
+        border: 1px solid grey;
+        outline: none;
+        padding: 5px;
+      }
+  
     }
-  }        
+  
+  }
+}

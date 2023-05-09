@@ -3,15 +3,23 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
 import { userService } from '../../services';
+import ModalUser from './ModalUser';
+import { emitter} from '../../utils/emitter';
 class UserManage extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            arrUsers: []
+            arrUsers: [],
+            isOpenModalUser: false,
+            user: {}
         }
     }
     async componentDidMount() {
+        await this.getAllUsersFromReact();   
+    }
+
+    getAllUsersFromReact = async () => {
         let response = await userService.getAllUsers('ALL');
         if(response && response.errCode === 0){
             this.setState({
@@ -22,7 +30,82 @@ class UserManage extends Component {
             //     console.log('check state user: ', this.state.arrUsers);
             // })
         }
+    }
 
+    handleAddNewUser = () => {
+        this.setState({
+            isOpenModalUser: true
+        })
+    }
+
+    toggleModalUser = () => {
+        this.setState({
+            isOpenModalUser: !this.state.isOpenModalUser
+        })
+    }
+
+    initNewUser = {
+
+    }
+
+    createNewUser = async (data) => {
+        try{
+            let response = await userService.createNewUserService(data);
+            if(response && response.errCode === 0){
+                console.log('create new user Ok');
+                this.setState({
+                    isOpenModalUser: false
+                })
+                await this.getAllUsersFromReact();
+
+                emitter.emit('EVENT_CLEAR_MODAL_DATA', {
+                    'id': '',
+                    'email': '',
+                    'password': '',
+                    'firstName': '',
+                    'lastName': '',
+                    'phoneNumber': '',
+                    'sex': '1',
+                    'roleId': 'R1'
+                });
+            }else{
+                alert(response.errMessage);
+
+            }
+    
+        }catch(e){
+            console.log(e);
+
+        }
+    }
+
+    handleDeleteUser = async (id) => {
+        try{
+            let response = await userService.deleteUserService(id);
+            if(response && response.errCode === 0){
+                console.log('delete user ok');
+                await this.getAllUsersFromReact();
+            }else{
+                alert(response.errMessage); 
+            }
+
+
+        }catch(e){
+            console.log(e);
+        }
+    }
+
+    handleEditUser = async (data) => {
+        try{
+
+            this.setState({
+                isOpenModalUser: true,
+                user: data
+            })
+
+        }catch (e){
+            console.log(e);
+        }
     }
 
     /**
@@ -39,34 +122,44 @@ class UserManage extends Component {
         let arrUsers = this.state.arrUsers;
         return (
             <div className="users-container">
+                <ModalUser
+                    isOpen = {this.state.isOpenModalUser}
+                    toggleFromParent={this.toggleModalUser}
+                    createNewUser= {this.createNewUser}
+                    user = {this.state.user}
+                />
                 <div className="title text-center">Manage users</div>
+                <div className='mx-1'>
+                    <button className="btn btn-primary px-3" onClick={() => this.handleAddNewUser()}><i className="fas fa-plus"></i> Add new user</button>
+                </div>
                 <div className='users-table mt-4 mx-3'>
                 <table>
-                    <tr>
-                        <th>Email</th>
-                        <th>FirstName</th>
-                        <th>LastName</th>
-                        <th>Address</th>
-                        <th>Action</th>
-                    </tr>
-                    
-                    {
-                        arrUsers && arrUsers.map((item,index) => {
-                            console.log('duong check map', item, index);
-                            return (
-                                <tr key={index}>
-                                    <td> {item.email} </td>
-                                    <td> {item.firstName} </td>
-                                    <td> {item.lastName} </td>
-                                    <td> {item.address} </td> 
-                                    <td>
-                                        <button className='btn-edit'><i class="fas fa-pencil-alt"></i></button>
-                                        <button className='btn-delete'><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                )
-                        })                            
-                    }
+                    <tbody>
+                        <tr>
+                            <th>Email</th>
+                            <th>FirstName</th>
+                            <th>LastName</th>
+                            <th>Address</th>
+                            <th>Action</th>
+                        </tr>
+                        
+                        {
+                            arrUsers && arrUsers.map((item,index) => {
+                                return (
+                                    <tr key={index}>
+                                        <td> {item.email} </td>
+                                        <td> {item.firstName} </td>
+                                        <td> {item.lastName} </td>
+                                        <td> {item.address} </td> 
+                                        <td>
+                                            <button className='btn-edit' onClick={() => this.handleEditUser(item)}><i className="fas fa-pencil-alt"></i></button>
+                                            <button className='btn-delete' onClick={() => this.handleDeleteUser(item.id)}><i className="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>
+                                    )
+                            })                            
+                        }
+                    </tbody>
                     
                 </table>
 
