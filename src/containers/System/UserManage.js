@@ -12,7 +12,8 @@ class UserManage extends Component {
         this.state = {
             arrUsers: [],
             isOpenModalUser: false,
-            user: {}
+            userEdit: {},
+            isEditUser: false
         }
     }
     async componentDidMount() {
@@ -34,7 +35,9 @@ class UserManage extends Component {
 
     handleAddNewUser = () => {
         this.setState({
-            isOpenModalUser: true
+            isOpenModalUser: true,
+            userEdit: {},
+            isEditUser: false
         })
     }
 
@@ -44,8 +47,24 @@ class UserManage extends Component {
         })
     }
 
-    initNewUser = {
+    editUser = async (data) => {
+        try{
 
+            let response = await userService.editUserService(data);
+            if(response && response.errCode === 0){
+                console.log('edit ok');
+                this.setState({
+                    isOpenModalUser: false
+                });
+                await this.getAllUsersFromReact();
+            }else{
+                alert(response.errMessage)
+            }
+
+
+        }catch(e){
+            console.log(e);
+        }
     }
 
     createNewUser = async (data) => {
@@ -58,16 +77,16 @@ class UserManage extends Component {
                 })
                 await this.getAllUsersFromReact();
 
-                emitter.emit('EVENT_CLEAR_MODAL_DATA', {
-                    'id': '',
-                    'email': '',
-                    'password': '',
-                    'firstName': '',
-                    'lastName': '',
-                    'phoneNumber': '',
-                    'sex': '1',
-                    'roleId': 'R1'
-                });
+                // emitter.emit('EVENT_CLEAR_MODAL_DATA', {
+                //     'id': '',
+                //     'email': '',
+                //     'password': '',
+                //     'firstName': '',
+                //     'lastName': '',
+                //     'phoneNumber': '',
+                //     'gender': '1',
+                //     'roleId': 'R1'
+                // });
             }else{
                 alert(response.errMessage);
 
@@ -100,7 +119,8 @@ class UserManage extends Component {
 
             this.setState({
                 isOpenModalUser: true,
-                user: data
+                userEdit: data,
+                isEditUser: true
             })
 
         }catch (e){
@@ -114,6 +134,7 @@ class UserManage extends Component {
      * 1. Run construct -> init state
      * 2. Didmount (setState)
      * 3. Render
+     * 4. DidUpdate
      * 
      * @returns 
      */
@@ -126,7 +147,9 @@ class UserManage extends Component {
                     isOpen = {this.state.isOpenModalUser}
                     toggleFromParent={this.toggleModalUser}
                     createNewUser= {this.createNewUser}
-                    user = {this.state.user}
+                    editUser= {this.editUser}
+                    currentUser = {this.state.userEdit}
+                    isEditUser = {this.state.isEditUser}
                 />
                 <div className="title text-center">Manage users</div>
                 <div className='mx-1'>
