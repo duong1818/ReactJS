@@ -139,7 +139,7 @@ class UserManage extends Component {
      * @returns 
      */
     render() {
-        // console.log('check render ', this.state);
+        //console.log('Duong check userManage ', this.state);
         let arrUsers = this.state.arrUsers;
         return (
             <div className="users-container">

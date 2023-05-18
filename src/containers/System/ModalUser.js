@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { emitter} from '../../utils/emitter';
@@ -43,7 +42,7 @@ class ModalUser extends Component {
 
 
     componentDidMount() {
-        console.log('call did mount', this.props)
+        //console.log('call did mount', this.props)
     }
 
     componentDidUpdate(previousProps, previousState){
@@ -131,8 +130,6 @@ class ModalUser extends Component {
     }
 
     render() {
-        console.log('check child props: ', this.props)
-        // console.log('check child open modal: ', this.props.isOpen)
         return (
             <Modal 
                 isOpen={this.props.isOpen} 
