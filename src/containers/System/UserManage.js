@@ -17,6 +17,7 @@ class UserManage extends Component {
         }
     }
     async componentDidMount() {
+        console.log('didmount', this.state);
         await this.getAllUsersFromReact();   
     }
 
@@ -25,11 +26,11 @@ class UserManage extends Component {
         if(response && response.errCode === 0){
             this.setState({
                 arrUsers: response.users
+            }
+            //goi call back dde check get data 
+            , () => {
+                console.log('check state user: ', this.state.arrUsers);
             })
-            // goi call back dde check get data 
-            // , () => {
-            //     console.log('check state user: ', this.state.arrUsers);
-            // })
         }
     }
 
@@ -139,7 +140,7 @@ class UserManage extends Component {
      * @returns 
      */
     render() {
-        //console.log('Duong check userManage ', this.state);
+        console.log('Duong check userManage ', this.state);
         let arrUsers = this.state.arrUsers;
         return (
             <div className="users-container">

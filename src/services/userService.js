@@ -28,8 +28,16 @@ const userService = {
                 id: id
             }
         })
-    }
+    },
 
+    /**
+     * type: string (gender, role, position, ...)
+     * @param {*} type 
+     */
+    getAllCodeService(type){
+        //console.log('duong check get all code input type : ', type);
+        return axios.get(`/api/allcode?type=${type}`);
+    }
 }
 
 export default userService;

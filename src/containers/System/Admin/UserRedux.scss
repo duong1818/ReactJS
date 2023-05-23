@@ -1,0 +1,25 @@
+.preview-img-container{
+    flex-direction: column;
+    .label-upload{
+        //border: 1px solid red;
+        padding: 5px;
+        border-radius: 3px;
+        background: azure;
+        cursor: pointer;
+    
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+    .preview-image{
+        width: 100%;
+        border: 1px solid #ddd;
+        height: 100px;
+        background: center center no-repeat;
+        background-size: contain;
+        cursor: pointer;
+    }
+    
+}
+
+

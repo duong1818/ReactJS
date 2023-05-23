@@ -35,7 +35,7 @@ class App extends Component {
     }
 
     render() {
-        console.log('Duong check App props:', this.props)
+        //console.log('Duong check App props:', this.props)
         return (
             <Fragment>
                 <Router history={history}>

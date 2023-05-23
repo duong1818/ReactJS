@@ -8,7 +8,8 @@
         "choose-doctor":"Choose a doctor",
         "checkup-package":"Checkup package",
         "health-check":"General health check",
-        "support":"Support"
+        "support":"Support",
+        "welcome":"Welcome, "
     },
     "banner":{
         "medical-background":"Medical background",
@@ -59,7 +60,35 @@
             "system-parameter": {
                 "header": "System-parameter"
             }
+        },
+
+        "admin":{
+            "manage-user": "User manage",
+            "manage-doctor": "Doctor manage",
+            "manage-admin": "Admin manage",
+            "crud":"CRUD user",
+            "crud-redux": "CRUD Redux",
+            "clinic": "Clinic",
+            "manage-clinic": "Clinic manage",
+            "specialty": "Specialty",
+            "manage-specialty": "Specialty manage",
+            "handbook": "Handbook",
+            "manage-handbook": "Handbook manage"
         }
+    },
+    "manage-user":{
+        "add": "Add a new user",
+        "email": "Email",
+        "password": "password",
+        "firstName": "first Name",
+        "lastName": "last Name",
+        "address": "Address",
+        "phoneNumber": "phone Number",
+        "gender": "Gender",
+        "role": "Role",
+        "position": "Position",
+        "image": "Avatar",
+        "save":"Save user"
     },
     "system": {
         "user-manage": {

@@ -186,6 +186,7 @@ class Navigator extends Component {
 
     render() {
         const { menus, location, onLinkClick } = this.props;
+        //console.log('Duong check navigator : ', this.props);
         return (
             <Fragment>
                 <ul className="navigator-menu list-unstyled">

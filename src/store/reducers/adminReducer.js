@@ -1,33 +1,61 @@
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    isLoggedIn: false,
-    adminInfo: null
+    isLoadingGender: false,
+    genders: [],
+    roles: [],
+    positions: []
 }
 
-const appReducer = (state = initialState, action) => {
+const adminReducer = (state = initialState, action) => {
+    let copyState = {};
+
     switch (action.type) {
-        case actionTypes.ADMIN_LOGIN_SUCCESS:
+        case actionTypes.FETCH_GENDER_START:
+            copyState = {...state};
+            copyState.isLoadingGender = true;
             return {
-                ...state,
-                isLoggedIn: true,
-                adminInfo: action.adminInfo
+                ...copyState,
             }
-        case actionTypes.ADMIN_LOGIN_FAIL:
+        case actionTypes.FETCH_GENDER_SUCCESS:
+            copyState = {...state};
+            copyState.isLoadingGender = false;
+            copyState.genders = action.genders;
             return {
-                ...state,
-                isLoggedIn: false,
-                adminInfo: null
+                ...copyState,
             }
-        case actionTypes.PROCESS_LOGOUT:
+        case actionTypes.FETCH_GENDER_FAILED:
+            copyState = {...state};
+            copyState.isLoadingGender = false;
+            copyState.genders = [];
+            return {
+                ...copyState
+            }
+        case actionTypes.FETCH_ROLE_SUCCESS:
+            copyState = {...state};
+            copyState.roles = action.roles;
+            return {
+                ...copyState,
+            }
+        case actionTypes.FETCH_ROLE_FAILED:
             return {
                 ...state,
-                isLoggedIn: false,
-                adminInfo: null
+                roles: []
+            }
+        case actionTypes.FETCH_POSITION_SUCCESS:
+            copyState = {...state};
+            copyState.positions = action.positions;
+            return {
+                ...copyState,
+            }
+        case actionTypes.FETCH_POSITION_FAILED:
+            return {
+                ...state,
+                positions: []
             }
         default:
             return state;
     }
 }
 
-export default appReducer;
+export default adminReducer;

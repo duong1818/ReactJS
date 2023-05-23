@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
 import UserManage from '../containers/System/UserManage';
-import UserRedux from '../containers/System/UserRedux';
+import UserRedux from '../containers/System/Admin/UserRedux';
 import RegisterPackageGroupOrAcc from '../containers/System/RegisterPackageGroupOrAcc';
 import Header from '../containers/Header/Header';
 
 class System extends Component {
     render() {
-        console.log('Duong check isLoggedIn : ', this.props);
+        //console.log('Duong check isLoggedIn : ', this.props);
         const { systemMenuPath, isLoggedIn } = this.props;
         return (
             <React.Fragment>

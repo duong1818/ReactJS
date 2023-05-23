@@ -9,7 +9,22 @@
     height: 40px;
     position: relative;
 
+    .menu-group{
+        .menu-list{
+            .menu{
+
+                &.active a{
+                    color: orange !important;
+                    //border: 1px solid red !important;
+                }
+            }
+        }
+    }
+
     .languages{
+        .welcome{
+            margin-right: 10px;
+        }
         .language-en{
             margin-left: 10px;
             margin-right: 15px;
