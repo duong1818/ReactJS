@@ -13,35 +13,7 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
-.btn-edit{
-  // background: orange;
-  outline: none;
-  border: none;
-  height: 25px;
-  width: 50px;
-  border-radius: 3px;
-  cursor: pointer;
-  background: transparent;
-  color: orange;
-  &:hover{
-    background-color: transparent !important;
-    color: orange !important;
-  }
-}
-.btn-delete{
-  outline: none;
-  border: none;
-  height: 25px;
-  width: 50px;
-  border-radius: 3px;
-  cursor: pointer;
-  background: transparent;
-  color: red;
-  &:hover{
-    background-color: transparent !important;
-    color: red !important;
-  }
-}
+
 
 .modal-user-container{
   .modal-header{
@@ -85,5 +57,35 @@ tr:nth-child(even) {
   
     }
   
+  }
+
+  .btn-edit{
+    // background: orange;
+    outline: none;
+    border: none;
+    height: 25px;
+    width: 50px;
+    border-radius: 3px;
+    cursor: pointer;
+    background: transparent;
+    color: orange;
+    &:hover{
+      background-color: transparent !important;
+      color: orange !important;
+    }
+  }
+  .btn-delete{
+    outline: none;
+    border: none;
+    height: 25px;
+    width: 50px;
+    border-radius: 3px;
+    cursor: pointer;
+    background: transparent;
+    color: red;
+    &:hover{
+      background-color: transparent !important;
+      color: red !important;
+    }
   }
 }

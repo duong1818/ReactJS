@@ -88,7 +88,8 @@
         "role": "Vai trò",
         "position": "Chức danh",
         "image": "Ảnh đại diện",
-        "save":"Lưu user"
+        "create":"Thêm user",
+        "update":"cập nhật user"
     },
     "system": {
         "user-manage": {

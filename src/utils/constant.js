@@ -14,7 +14,8 @@ export const LANGUAGES = {
 export const manageActions = {
     ADD: "ADD",
     EDIT: "EDIT",
-    DELETE: "DELETE"
+    DELETE: "DELETE",
+    READ: "READ"
 };
 
 export const dateFormat = {

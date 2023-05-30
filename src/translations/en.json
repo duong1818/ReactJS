@@ -88,7 +88,8 @@
         "role": "Role",
         "position": "Position",
         "image": "Avatar",
-        "save":"Save user"
+        "create":"Create user",
+        "update":"Update user"
     },
     "system": {
         "user-manage": {
