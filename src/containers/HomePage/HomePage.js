@@ -10,13 +10,14 @@ import OutStandingDoctor from './Section/OutStandingDoctor';
 import HandBook from './Section/HandBook';
 import About from './Section/About';
 import HomeFooter from './HomeFooter';
+
 class HomePage extends Component {
 
     render() {
-        console.log('Duong check HomePage props:', this.props);
+        //console.log('Duong check HomePage props:', this.props);
         let settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4,
             slidesToScroll: 1,

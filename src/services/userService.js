@@ -37,6 +37,10 @@ const userService = {
     getAllCodeService(type){
         //console.log('duong check get all code input type : ', type);
         return axios.get(`/api/allcode?type=${type}`);
+    },
+
+    getTopDoctorHomeService(limit){
+        return axios.get(`/api/top-doctor-home?limit=${limit}`); 
     }
 }
 

@@ -6,6 +6,7 @@ const initialState = {
     roles: [],
     positions: [],
     listUsers: [],
+    listDoctors: []
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -92,7 +93,23 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-            
+        case actionTypes.GET_TOP_DOCTORS_SUCCESS:
+            copyState = {...state};
+            let listDoctors = action.listDoctors;
+            //listUser.reverse();
+            copyState.listDoctors = listDoctors;
+
+            //console.log('ListDoctors : ', action)
+
+            return {
+                ...copyState,
+            }
+        case actionTypes.GET_TOP_DOCTORS_FAILED:
+            return {
+                ...state,
+                listDoctors: []
+            }
+                
         default:
             return state;
     }

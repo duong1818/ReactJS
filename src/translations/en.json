@@ -12,7 +12,7 @@
         "welcome":"Welcome, "
     },
     "banner":{
-        "medical-background":"Medical background",
+        "medical-background":"MEDICAL PLATFORM",
         "health-care":"Health care",
         "find-specialty":"Find specialty",
         "specialized-examination":"Specialized examination",
@@ -90,6 +90,10 @@
         "image": "Avatar",
         "create":"Create user",
         "update":"Update user"
+    },
+    "schema": {
+        "outstanding-doctors": "Last week's outstanding doctors",
+        "more-info": "More info"
     },
     "system": {
         "user-manage": {

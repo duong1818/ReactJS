@@ -2,86 +2,67 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Slider from 'react-slick';
+import * as actions from '../../../store/actions';
+import { LANGUAGES } from '../../../utils';
+import { FormattedMessage } from 'react-intl';
 
 class OutStandingDoctor extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            listDoctors: []
+        }
+    }
+
+    componentDidMount() {
+        this.props.loadTopDoctors('');
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.listDoctors !== this.props.listDoctors) {
+            this.setState({
+                listDoctors: this.props.listDoctors
+            })
+        }
+    }
+
     render() {
+
+        let {listDoctors} = this.state;
+        let {language} = this.props;
 
         return(
             <div className='section-share section-outStanding-Doctor'>
                 <div className='section-container'>
                     <div className='section-header'>
-                        <span className='title-section'>Bác sĩ nổi bật tuần qua</span>
-                        <button className='btn-section'>Tìm kiếm</button>
+                        <span className='title-section'><FormattedMessage id="schema.outstanding-doctors"/></span>
+                        <button className='btn-section'><FormattedMessage id="schema.more-info"/></button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outStanding-Doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Khám Nam học, Bệnh viện Nam học và Hiếm muộn Hà Nội</div>
-                                        <div>Nam học 1</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outStanding-Doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Khám Nam học, Bệnh viện Nam học và Hiếm muộn Hà Nội</div>
-                                        <div>Nam học 2</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outStanding-Doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Khám Nam học, Bệnh viện Nam học và Hiếm muộn Hà Nội</div>
-                                        <div>Nam học 3</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outStanding-Doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Khám Nam học, Bệnh viện Nam học và Hiếm muộn Hà Nội</div>
-                                        <div>Nam học 4</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outStanding-Doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Khám Nam học, Bệnh viện Nam học và Hiếm muộn Hà Nội</div>
-                                        <div>Nam học 5</div>
-                                    </div>
-                                </div>  
-                            </div>
-                            <div className='section-customize'>
-                                <div className='customize-border'>
-                                    <div className='outer-bg'>
-                                        <div className='bg-image section-outStanding-Doctor'></div>
-                                    </div>
-                                    <div className='position text-center'>
-                                        <div>Khám Nam học, Bệnh viện Nam học và Hiếm muộn Hà Nội</div>
-                                        <div>Nam học 6</div>
-                                    </div>
-                                </div>
-                            </div>
+
+                                {listDoctors && listDoctors.length > 0
+                                    && listDoctors.map((item, index) => {
+                                        let nameVi = `${item.positionData.valueVi}, ${item.lastName} ${item.firstName}`;
+                                        let nameEn = `${item.positionData.valueEn}, ${item.firstName} ${item.lastName}`;
+                                        let imageUrl = '';
+                                        if(item.image) imageUrl = new Buffer.from(item.image, 'base64').toString('binary');
+                                        return (
+                                            <div className='section-customize' key={index}>
+                                                <div className='customize-border'>
+                                                    <div className='outer-bg'>
+                                                        <div className='bg-image section-outStanding-Doctor' style={{backgroundImage: `url(${imageUrl})`}}></div>
+                                                    </div>
+                                                    <div className='position text-center'>
+                                                        <div>{language === LANGUAGES.VI? nameVi : nameEn} </div>
+                                                        <div>Khoa co xuong</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
                     </Slider>
                    </div>
                 </div>
@@ -95,11 +76,14 @@ class OutStandingDoctor extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        listDoctors: state.admin.listDoctors,
+        language: state.app.language
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        loadTopDoctors: (limit) => dispatch(actions.loadTopDoctors(limit)),
     };
 };
 

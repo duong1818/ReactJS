@@ -156,6 +156,11 @@ export const getAllUsersStart = () => {
         try{
 
             let res = await userService.getAllUsers('ALL');
+
+            let res1 = await userService.getTopDoctorHomeService(2);
+            console.log("res1:  ",res1);
+
+
             if(res && res.errCode === 0){
                 dispatch(getAllUsersSuccess(res.users));
             }else{
@@ -211,3 +216,38 @@ export const deleteUserFailed = () => ({
     type: actionTypes.DELETE_USER_FAILED
 })
 
+
+
+/**
+ * 
+ * @param limit Number doctors to load
+ * @returns 
+ */
+export const loadTopDoctors = (limit) => {
+    return async (dispatch, getState) => {
+        try{
+
+            let res = await userService.getTopDoctorHomeService(limit);
+
+            if(res && res.errCode === 0){
+                dispatch(loadTopDoctorsSuccess(res.doctors));
+            }else{
+                dispatch(loadTopDoctorsFailed());   
+            }
+
+    
+        }catch(e){
+            console.log(e);
+            dispatch(loadTopDoctorsFailed()); 
+        }
+    }
+}
+
+export const loadTopDoctorsSuccess = (listDoctors) => ({
+    type: actionTypes.GET_TOP_DOCTORS_SUCCESS,
+    listDoctors: listDoctors
+})
+
+export const loadTopDoctorsFailed = () => ({
+    type: actionTypes.GET_TOP_DOCTORS_FAILED,
+})

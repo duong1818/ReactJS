@@ -91,6 +91,10 @@
         "create":"Thêm user",
         "update":"cập nhật user"
     },
+    "schema": {
+        "outstanding-doctors": "Bác sĩ nổi bật tuần qua",
+        "more-info": "Xem thêm"
+    },
     "system": {
         "user-manage": {
             "fail-to-load-fouser": "Không thể tải về danh sách người dùng",
