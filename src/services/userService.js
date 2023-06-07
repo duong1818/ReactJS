@@ -41,6 +41,23 @@ const userService = {
 
     getTopDoctorHomeService(limit){
         return axios.get(`/api/top-doctor-home?limit=${limit}`); 
+    },
+
+    getALlDoctors(limit){
+        return axios.get(`/api/get-all-doctors`); 
+    },
+
+    createInforDoctor(infoDoctor){
+        //console.log('duong check create inforDoctor : ', infoDoctor);
+        return axios.post(`/api/create-infor-doctor`,infoDoctor);
+    },
+    editInforDoctor(infoDoctor){
+        //console.log('duong check create inforDoctor : ', infoDoctor);
+        return axios.put(`/api/edit-infor-doctor`,infoDoctor);
+    },
+    getDetailDoctor(doctorId){
+        //console.log('duong check doctorId :', doctorId);
+        return axios.get(`/api/get-infor-doctor?id=${doctorId}`);
     }
 }
 

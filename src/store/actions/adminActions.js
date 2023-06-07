@@ -251,3 +251,85 @@ export const loadTopDoctorsSuccess = (listDoctors) => ({
 export const loadTopDoctorsFailed = () => ({
     type: actionTypes.GET_TOP_DOCTORS_FAILED,
 })
+
+export const getAllDoctors = () => {
+    return async (dispatch, getState) => {
+        try{
+
+            let res = await userService.getALlDoctors();
+
+            if(res && res.errCode === 0){
+                dispatch(getAllDoctorsSuccess(res.doctors));
+            }else{
+                dispatch(getAllDoctorsFailed());   
+            }
+
+    
+        }catch(e){
+            console.log(e);
+            dispatch(loadTopDoctorsFailed()); 
+        }
+    }
+}
+
+export const getAllDoctorsSuccess = (allDoctors) => ({
+    type: actionTypes.GET_ALL_DOCTORS_SUCCESS,
+    allDoctors: allDoctors
+})
+
+export const getAllDoctorsFailed = () => ({
+    type: actionTypes.GET_ALL_DOCTORS_FAILED,
+})
+
+export const createInfoDoctorStart = (infoDoctor) => {
+    return async (dispatch, getState) => {
+        try{
+
+            let res = await userService.createInforDoctor(infoDoctor);
+            if(res && res.errCode === 0){
+                dispatch(createInfoDoctorSuccess());
+                dispatch(getAllDoctors());
+                toast.success("CREATE INFOR DOCTOR SUCCESSFUL!")
+            }else{
+                dispatch(createInfoDoctorFailed());   
+                toast.warn("CREATE INFOR DOCTOR FAILED!");
+            }
+            console.log(res)
+
+    
+        }catch(e){
+            dispatch(createInfoDoctorFailed()); 
+        }
+    }
+}
+
+export const createInfoDoctorSuccess = () => ({
+    type: actionTypes.CREATE_INFO_DOCTOR_SUCCESS,
+})
+
+export const createInfoDoctorFailed = () => ({
+    type: actionTypes.CREATE_INFO_DOCTOR_FAILED,
+})
+
+export const editInfoDoctorStart = (infoDoctor) => {
+    return async (dispatch, getState) => {
+        try{
+
+            let res = await userService.editInforDoctor(infoDoctor);
+            if(res && res.errCode === 0){
+                dispatch({type: actionTypes.EDIT_INFO_DOCTOR_SUCCESS});
+                dispatch(getAllDoctors());
+                toast.success("EDIT DOCTOR INFORMATION SUCCESSFUL!")
+            }else{
+                dispatch({type: actionTypes.EDIT_INFO_DOCTOR_FAILED});   
+                toast.warn("EDIT DOCTOR INFORMATION FAILED!");
+            }
+            console.log(res)
+
+    
+        }catch(e){
+            dispatch({type: actionTypes.EDIT_INFO_DOCTOR_FAILED}); 
+        }
+    }
+}
+

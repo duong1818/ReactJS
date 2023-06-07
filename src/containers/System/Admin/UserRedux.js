@@ -149,13 +149,13 @@ class UserRedux extends Component {
         let file = files[0];
         if(file){
 
+            let copyUser = {...this.state.user};
+
             let base64 = await CommonUtils.getBase64(file);
             console.log('base64: ', base64);
+            copyUser['image'] = base64;
 
             const objectUrl = URL.createObjectURL(file);
-
-            let copyUser = {...this.state.user};
-            copyUser['image'] = base64;
             copyUser['imageUrl'] = objectUrl;
             this.setState({
                 user: copyUser
@@ -257,7 +257,7 @@ class UserRedux extends Component {
             copyUser.position = !user.position? CommonUtils.getFirstValueOfArr(this.props.positionArr) : user.position;
 
             if(user.image){
-                let bufferBase64 = new Buffer.from(user.image, 'base64').toString('binary');
+                let bufferBase64 =  user.image;//CommonUtils.getUrlFromBase64(user.image);
                 copyUser.imageUrl = bufferBase64;
             }else{
                 copyUser.imageUrl = '';

@@ -6,7 +6,8 @@ const initialState = {
     roles: [],
     positions: [],
     listUsers: [],
-    listDoctors: []
+    listDoctors: [],
+    allDoctors: [],
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -109,7 +110,37 @@ const adminReducer = (state = initialState, action) => {
                 ...state,
                 listDoctors: []
             }
-                
+        case actionTypes.GET_ALL_DOCTORS_SUCCESS:
+            copyState = {...state};
+            let allDoctors = action.allDoctors;
+            copyState.allDoctors = allDoctors;
+
+            return {
+                ...copyState,
+            }
+        case actionTypes.GET_ALL_DOCTORS_FAILED:
+            return {
+                ...state,
+                allDoctors: []
+            }
+        case actionTypes.CREATE_INFO_DOCTOR_SUCCESS:
+
+            return {
+                ...state,
+            }
+        case actionTypes.CREATE_INFO_DOCTOR_FAILED:
+            return {
+                ...state,
+            }
+        case actionTypes.EDIT_INFO_DOCTOR_SUCCESS:
+            return {
+                ...state,
+            }
+        case actionTypes.EDIT_INFO_DOCTOR_FAILED:
+            return {
+                ...state,
+            }
+                        
         default:
             return state;
     }

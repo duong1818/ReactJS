@@ -16,7 +16,7 @@ class CommonUtils {
     /**
      * covert image to base 64 to save file to DB with BLOB format
      * @param {*} file 
-     * @returns 
+     * @returns base64 encoded
      */
     static getBase64(file) {
         return new Promise((resolve, reject) => {
@@ -26,6 +26,17 @@ class CommonUtils {
           reader.onerror = error => reject(error);
         });
     }
+
+    /**
+     * convert base64 to URL to display the image
+     * @param bufferBase64
+     * @return url string
+     */
+    static getUrlFromBase64(base64) {
+        return new Buffer.from(base64, 'base64').toString('binary');
+    }
+
+
 }
 
 export default CommonUtils;

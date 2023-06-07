@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import './HomeHeader.scss';
 import logo from '../../assets/logo.svg';
 import { FormattedMessage } from 'react-intl';
-import { LANGUAGES } from '../../utils';
+import { LANGUAGES, path } from '../../utils';
 import { changeLanguageApp } from '../../store/actions';
+import { withRouter } from 'react-router';
 
 class HomeHeader extends Component {
 
@@ -15,8 +16,14 @@ class HomeHeader extends Component {
         // fire action redux event
 
         this.props.changeLanguageAppRedux(language);
+    }
 
+    handleClickLogo = () => {
+        console.log('logo clicked');
 
+        if (this.props.history) {
+            this.props.history.push('/home')
+        }
     }
 
     render() {
@@ -28,7 +35,7 @@ class HomeHeader extends Component {
                     <div className='home-header-content'>
                         <div className='left-content'>
                             <i className="fas fa-bars"></i>
-                            <img className='header-logo' src={logo}></img>
+                            <img className='header-logo' src={logo} onClick={() => this.handleClickLogo()}></img>
                         </div>
                         <div className='center-content'>
                             <div className='child-content'>
@@ -56,61 +63,63 @@ class HomeHeader extends Component {
 
                     </div>
                 </div>
+                {this.props.isShowBanner &&
+                
+                    <div className='home-header-banner'>
+                        <div className='content-up'>
+                            <div className='title1'><FormattedMessage id="banner.medical-background"/></div>
+                            <div className='title2'><FormattedMessage id="banner.health-care"/></div>
+                            <div className='search'>
+                                <i className="fas fa-search"></i>
+                                <FormattedMessage id="banner.find-specialty">
+                                    {(msg) => (<input placeholder={msg} type='text'/>)}
+                                </FormattedMessage>
+                            </div>
+                        </div>
+                        <div className='content-down'>
+                            <div className='options'>
+                                <div className='option-child'>
+                                    <div className='icon-child'>
+                                        <i className="fas fa-hospital-alt fa-lg"></i>
+                                    </div>
+                                    <div className='text-child'><FormattedMessage id="banner.specialized-examination"/></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'>
+                                        <i className="fas fa-mobile-alt fa-lg"></i>
+                                    </div>
+                                    <div className='text-child'><FormattedMessage id="banner.remote-examination"/></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'>
+                                        <i className="far fa-hospital fa-lg"></i>
+                                    </div>
+                                    <div className='text-child'><FormattedMessage id="banner.general-examination"/></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'>
+                                        <i className="fas fa-flask fa-lg"></i>
+                                    </div>
+                                    <div className='text-child'><FormattedMessage id="banner.medical-test"/></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'>
+                                        {/* <i className="far fa-hospital fa-lg"></i> */}
+                                        <i className="fas fa-walking fa-lg"></i>
+                                    </div>
+                                    <div className='text-child'><FormattedMessage id="banner.mental-health"/></div>
+                                </div>
+                                <div className='option-child'>
+                                    <div className='icon-child'>
+                                        <i className="fas fa-user-md"></i>
+                                    </div>
+                                    <div className='text-child'><FormattedMessage id="banner.dental-examination"/></div>
+                                </div>
 
-                <div className='home-header-banner'>
-                    <div className='content-up'>
-                        <div className='title1'><FormattedMessage id="banner.medical-background"/></div>
-                        <div className='title2'><FormattedMessage id="banner.health-care"/></div>
-                        <div className='search'>
-                            <i className="fas fa-search"></i>
-                            <FormattedMessage id="banner.find-specialty">
-                                {(msg) => (<input placeholder={msg} type='text'/>)}
-                            </FormattedMessage>
+                            </div>
                         </div>
                     </div>
-                    <div className='content-down'>
-                        <div className='options'>
-                            <div className='option-child'>
-                                <div className='icon-child'>
-                                    <i className="fas fa-hospital-alt fa-lg"></i>
-                                </div>
-                                <div className='text-child'><FormattedMessage id="banner.specialized-examination"/></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'>
-                                    <i className="fas fa-mobile-alt fa-lg"></i>
-                                </div>
-                                <div className='text-child'><FormattedMessage id="banner.remote-examination"/></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'>
-                                    <i className="far fa-hospital fa-lg"></i>
-                                </div>
-                                <div className='text-child'><FormattedMessage id="banner.general-examination"/></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'>
-                                    <i className="fas fa-flask fa-lg"></i>
-                                </div>
-                                <div className='text-child'><FormattedMessage id="banner.medical-test"/></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'>
-                                    {/* <i className="far fa-hospital fa-lg"></i> */}
-                                    <i className="fas fa-walking fa-lg"></i>
-                                </div>
-                                <div className='text-child'><FormattedMessage id="banner.mental-health"/></div>
-                            </div>
-                            <div className='option-child'>
-                                <div className='icon-child'>
-                                    <i className="fas fa-user-md"></i>
-                                </div>
-                                <div className='text-child'><FormattedMessage id="banner.dental-examination"/></div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                }
 
             </React.Fragment>
         );
@@ -131,4 +140,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeHeader);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomeHeader));
