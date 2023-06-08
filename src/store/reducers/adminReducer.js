@@ -8,6 +8,7 @@ const initialState = {
     listUsers: [],
     listDoctors: [],
     allDoctors: [],
+    allCodeTime: []
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -140,7 +141,17 @@ const adminReducer = (state = initialState, action) => {
             return {
                 ...state,
             }
-                        
+        case actionTypes.GET_ALLCODE_TIME_SUCCESS:
+            return {
+                ...state,
+                allCodeTime: action.allCodeTime
+            }
+        case actionTypes.GET_ALLCODE_TIME_FAILED:
+            return {
+                ...state,
+                allCodeTime: []
+            }
+                            
         default:
             return state;
     }

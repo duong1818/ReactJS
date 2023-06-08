@@ -1,6 +1,7 @@
 import actionTypes from './actionTypes';
 import { userService } from '../../services';
 import { toast } from 'react-toastify';
+import { ALLCODE_TYPE } from '../../utils';
 
 export const fetchGenderStart = () => {
     return async (dispatch, getState) => {
@@ -299,6 +300,7 @@ export const createInfoDoctorStart = (infoDoctor) => {
     
         }catch(e){
             dispatch(createInfoDoctorFailed()); 
+            toast.warn("CREATE INFOR DOCTOR FAILED!");
         }
     }
 }
@@ -329,6 +331,26 @@ export const editInfoDoctorStart = (infoDoctor) => {
     
         }catch(e){
             dispatch({type: actionTypes.EDIT_INFO_DOCTOR_FAILED}); 
+            toast.warn("EDIT DOCTOR INFORMATION FAILED!");
+        }
+    }
+}
+
+export const getAllCodeTime = () => {
+    return async (dispatch, getState) => {
+        try{
+
+            let res = await userService.getAllCodeService(ALLCODE_TYPE.TIME);
+            if(res && res.errCode === 0){
+                dispatch({
+                    type: actionTypes.GET_ALLCODE_TIME_SUCCESS,
+                    allCodeTime: res.data
+                });
+            }else{
+                dispatch({type: actionTypes.GET_ALLCODE_TIME_FAILED});   
+            }
+        }catch(e){
+            dispatch({type: actionTypes.GET_ALLCODE_TIME_FAILED}); 
         }
     }
 }

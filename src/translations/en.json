@@ -74,6 +74,9 @@
             "manage-specialty": "Specialty manage",
             "handbook": "Handbook",
             "manage-handbook": "Handbook manage"
+        },
+        "doctor":{
+            "manage-schedule": "Manage Doctor's schedule"
         }
     },
     "manage-user":{
@@ -90,6 +93,12 @@
         "image": "Avatar",
         "create":"Create user",
         "update":"Update user"
+    },
+    "manage-schedule": {
+        "title": "Manage doctor's examination plan",
+        "choose-doctor": "Choose a doctor",
+        "choose-date": "Choose date",
+        "save-schedule": "Save schedule"
     },
     "schema": {
         "outstanding-doctors": "Last week's outstanding doctors",
