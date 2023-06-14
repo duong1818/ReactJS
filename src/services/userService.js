@@ -58,6 +58,12 @@ const userService = {
     getDetailDoctor(doctorId){
         //console.log('duong check doctorId :', doctorId);
         return axios.get(`/api/get-infor-doctor?id=${doctorId}`);
+    },
+    bulkCreateScheduleDoctor(schedule){
+        return axios.post(`/api/bulk-create-schedule`,schedule);
+    },
+    getScheduleDoctorByDate(doctorId, date){
+        return axios.get(`/api/get-schedule-doctor-by-date?doctorId=${doctorId}&date=${date}`);
     }
 }
 

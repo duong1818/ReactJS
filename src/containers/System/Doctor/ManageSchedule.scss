@@ -16,7 +16,10 @@
             border: 1px solid grey;
             padding: 5px 15px;
         }
-    }
+        .active {
+            background: #f1ae0d
+        }
+}
     .btn-save-schedule {
         //width: 10%;
     }

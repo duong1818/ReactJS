@@ -5,6 +5,7 @@ import './DetailDoctor.scss';
 import HomeHeader from '../../HomePage/HomeHeader';
 import { userService } from '../../../services';
 import { CommonUtils, LANGUAGES } from '../../../utils';
+import DoctorSchedule from './DoctorSchedule';
 
 class DetailDoctor extends Component {
 
@@ -68,7 +69,12 @@ class DetailDoctor extends Component {
 
                        </div>
                     </div>
-                    <div className='schedule-doctor'></div>
+                    <div className='schedule-doctor'>
+                        <div className='content-left'>
+                            <DoctorSchedule doctorId={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}/>
+                        </div>
+                        <div className='content-right'></div>
+                    </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.doctorInformation && detailDoctor.doctorInformation.contentHTML &&
                            <div dangerouslySetInnerHTML={{ __html: detailDoctor.doctorInformation.contentHTML }}></div>

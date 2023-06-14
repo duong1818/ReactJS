@@ -181,5 +181,13 @@
             "remove-assign-fail": "Fail to unassign service package to customer",
             "sure-delete-assign": "Are you sure to unassign service package to customer?"
         }
+    },
+    "patient": {
+        "detail-doctor": {
+            "schedule": "schedules",
+            "no-schedule": "There are no appointments during this time, please choose another time!",
+            "choose": "Choose",
+            "book-free": "and book (free)"           
+        }
     }
 }

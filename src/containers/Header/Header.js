@@ -25,7 +25,6 @@ class Header extends Component {
     }
 
     componentDidMount() {
-        console.log('this.props ', this.props.userInfo )
         let userInfo = this.props.userInfo;
         if(userInfo && userInfo.role){
             let role = userInfo.role;
