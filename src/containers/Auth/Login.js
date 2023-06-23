@@ -24,7 +24,6 @@ class Login extends Component {
         this.setState({
             username: event.target.value,
         })
-        //console.log(event.target.value);
     }
 
     handleOnChangePassword = (event) => {
@@ -32,14 +31,12 @@ class Login extends Component {
         this.setState({
             password: event.target.value,
         })
-        //console.log(event.target.value);
     }
     HandleLogin = async () => {
         this.setState({
             errMessage: ''
         })
 
-        // console.log('all state: ', this.state);
         try{
             let data = await userService.handleLogin(this.state.username, this.state.password);
             if(data && data.errCode !== 0){
@@ -49,12 +46,10 @@ class Login extends Component {
             }
             if(data && data.errCode === 0){
                 this.props.userLoginSuccess(data.user);
-                //console.log('login success', data);
 
             }
 
         }catch(e){
-            console.log('error: ' , e.response);
             this.setState({
                 errMessage: e.response.data.message
             })
@@ -64,13 +59,10 @@ class Login extends Component {
         this.setState({
             isShowPassword: !this.state.isShowPassword,
         })
-        console.log('showPassword: ', this.state.isShowPassword);
     }
 
     handleKeyDown = (event) => {
-        //console.log('keyDown: ', event);
         if(event.key === 'Enter' || event.keyCode === 13){
-            //console.log('Enter key pressed');
             this.HandleLogin();
         }
     }

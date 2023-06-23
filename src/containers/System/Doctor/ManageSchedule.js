@@ -83,8 +83,6 @@ class ManageSchedule extends Component {
 
         if(selectedDoctor){
 
-            console.log('handleSelectChange: ', selectedDoctor);
-
             this.setState({
                 selectedDoctor: selectedDoctor,
             })
@@ -93,7 +91,6 @@ class ManageSchedule extends Component {
     };
 
     handleOnchangeDatePicker = (date) => {
-        //console.log("onchange: ", date);
         this.setState({ 
             currentDate: date[0]
         });
@@ -111,7 +108,6 @@ class ManageSchedule extends Component {
                 }
                 return data;
             });
-            //console.log("rangeTime: ", rangeTime);
 
             this.setState({
                 rangeTime: rangeTime
@@ -161,8 +157,6 @@ class ManageSchedule extends Component {
 
         if(res && res.errCode === 0){
             toast.success("Schedule was successfully saved!");
-            console.log('response : ', res);
-            console.log('check result : ' , result);
     
         }else{
             toast.error("Schedule creating was failed!");
@@ -171,12 +165,10 @@ class ManageSchedule extends Component {
     }
 
     render() {
-        //console.log("this state: ", this.state.rangeTime);
         let {language} = this.props;
         let {rangeTime} = this.state;
         let yesterday = new Date();
         yesterday.setDate(yesterday.getDate() - 1);
-        console.log("check day : ", yesterday)
         return (
             <div className="manage-schedule-container">
                 <div className='m-s-title'><FormattedMessage id="manage-schedule.title"/></div>

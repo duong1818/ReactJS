@@ -29,9 +29,6 @@ class DoctorSchedule extends Component {
     setAllDaysForSelection(){
         let { language } = this.props;
 
-        // console.log('moment vi :',moment(new Date()).format('dddd - DD/MM'));
-        // console.log('moment en :',moment(new Date()).locale('en').format('ddd - DD/MM'));
-
         let allDays = [];
         for (let i = 0; i < MAX_NUM_DAYS; i++) {
             let object = {};
@@ -67,7 +64,6 @@ class DoctorSchedule extends Component {
             let response = await userService.getScheduleDoctorByDate(doctorId, dateUnix);
     
             
-            console.log('doctorId , schedules : ', doctorId, response , new Date() - 1);
             if(response && response.errCode === 0){
                 this.setState({
                     allAvailableTimes: response.schedules ? response.schedules : []
@@ -85,8 +81,6 @@ class DoctorSchedule extends Component {
             this.setAllDaysForSelection();
         }
         if(prevProps.doctorId !== this.props.doctorId){
-            console.log('state.allDays : ', this.state.allDays);
-            console.log('doctorId : ', this.props.doctorId);
             if(this.state.allDays && this.state.allDays.length > 0){
                 let firstDayUnix = this.state.allDays[0].value;
                 this.setAllTimesForDay(firstDayUnix);
@@ -102,7 +96,6 @@ class DoctorSchedule extends Component {
     render() {
 
         let {allDays, allAvailableTimes} = this.state;
-        //console.log('allDays : ',allDays, allAvailableTimes);
         let {language} = this.props;
 
         return (
@@ -139,7 +132,7 @@ class DoctorSchedule extends Component {
                                 </div>
                             }
                             <div className='book-free'>
-                                <span><FormattedMessage id='patient.detail-doctor.choose'/> <i class='far fa-hand-point-up'/> <FormattedMessage id='patient.detail-doctor.book-free'/></span>
+                                <span><FormattedMessage id='patient.detail-doctor.choose'/> <i className='far fa-hand-point-up'/> <FormattedMessage id='patient.detail-doctor.book-free'/></span>
                             </div>
                         </React.Fragment>
                             : 

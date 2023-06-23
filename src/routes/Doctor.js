@@ -23,8 +23,6 @@ class Doctor extends Component {
 }
 
 const mapStateToProps = state => {
-    //console.log('Duong check state : ', state);
-
     return {
         isLoggedIn: state.user.isLoggedIn
     };

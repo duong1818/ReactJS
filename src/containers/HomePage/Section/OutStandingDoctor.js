@@ -30,8 +30,6 @@ class OutStandingDoctor extends Component {
     }
 
     handleViewDetailDoctor = (doctor) => {
-        console.log('checking doctor detail : ', doctor);
-        // history.push(`users/:${doctor.id}`);
         this.props.history.push(`/detail-doctor/${doctor.id}`);
     }
 

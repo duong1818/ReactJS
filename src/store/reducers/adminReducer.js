@@ -8,7 +8,8 @@ const initialState = {
     listUsers: [],
     listDoctors: [],
     allDoctors: [],
-    allCodeTime: []
+    allCodeTime: [],
+    allCodeDoctorMore: {}
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -100,9 +101,6 @@ const adminReducer = (state = initialState, action) => {
             let listDoctors = action.listDoctors;
             //listUser.reverse();
             copyState.listDoctors = listDoctors;
-
-            //console.log('ListDoctors : ', action)
-
             return {
                 ...copyState,
             }
@@ -151,7 +149,17 @@ const adminReducer = (state = initialState, action) => {
                 ...state,
                 allCodeTime: []
             }
-                            
+        case actionTypes.GET_ALLCODE_DOCTOR_MORE_SUCCESS:
+            return {
+                ...state,
+                allCodeDoctorMore: action.allCodeDoctorMore
+            }
+        case actionTypes.GET_ALLCODE_DOCTOR_MORE_FAILED:
+            return {
+                ...state,
+                allCodeDoctorMore: []
+            }
+                                
         default:
             return state;
     }

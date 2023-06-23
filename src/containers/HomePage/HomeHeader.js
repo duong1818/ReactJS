@@ -12,14 +12,12 @@ class HomeHeader extends Component {
 
     changeLanguage = (language) => {
 
-        // alert(language);
         // fire action redux event
 
         this.props.changeLanguageAppRedux(language);
     }
 
     handleClickLogo = () => {
-        console.log('logo clicked');
 
         if (this.props.history) {
             this.props.history.push('/home')
@@ -27,7 +25,6 @@ class HomeHeader extends Component {
     }
 
     render() {
-        console.log('this.props: ', this.props);
         let language = this.props.language;
         return(
             <React.Fragment>

@@ -10,7 +10,7 @@ export const fetchGenderStart = () => {
             dispatch({
                 type: actionTypes.FETCH_GENDER_START
             })
-            let res = await userService.getAllCodeService("GENDER");
+            let res = await userService.getAllCodeService(ALLCODE_TYPE.GENDER);
             if(res && res.errCode === 0){
                 dispatch(fetchGenderSuccess(res.data));
             }else{
@@ -36,7 +36,7 @@ export const fetchRoleStart = () => {
     return async (dispatch, getState) => {
         try{
 
-            let res = await userService.getAllCodeService("ROLE");
+            let res = await userService.getAllCodeService(ALLCODE_TYPE.ROLE);
             if(res && res.errCode === 0){
                 dispatch(fetchRoleSuccess(res.data));
             }else{
@@ -62,7 +62,7 @@ export const fetchPositionStart = () => {
     return async (dispatch, getState) => {
         try{
 
-            let res = await userService.getAllCodeService("POSITION");
+            let res = await userService.getAllCodeService(ALLCODE_TYPE.POSITION);
             if(res && res.errCode === 0){
                 dispatch(fetchPositionSuccess(res.data));
             }else{
@@ -98,9 +98,6 @@ export const addUserStart = (user) => {
                 dispatch(addUserFailed());   
                 toast.warn("ADD USER FAILED!");
             }
-            console.log(res)
-
-    
         }catch(e){
             dispatch(addUserFailed()); 
         }
@@ -128,9 +125,6 @@ export const editUserStart = (user) => {
                 dispatch(editUserFailed());
                 toast.warn("EDIT USER FAILED!");   
             }
-            console.log(res)
-
-    
         }catch(e){
             dispatch(editUserFailed()); 
             toast.warn("EDIT USER FAILED!");
@@ -159,17 +153,11 @@ export const getAllUsersStart = () => {
             let res = await userService.getAllUsers('ALL');
 
             let res1 = await userService.getTopDoctorHomeService(2);
-            console.log("res1:  ",res1);
-
-
             if(res && res.errCode === 0){
                 dispatch(getAllUsersSuccess(res.users));
             }else{
                 dispatch(getAllUsersFailed());   
             }
-            //console.log(res)
-
-    
         }catch(e){
             dispatch(getAllUsersFailed()); 
         }
@@ -199,9 +187,6 @@ export const deleteUserStart = (userId) => {
                 dispatch(deleteUserFailed());   
                 toast.warn("DELETE USER FAILED!")
             }
-            //console.log(res)
-
-    
         }catch(e){
             dispatch(deleteUserFailed()); 
             toast.warn("DELETE USER FAILED!")
@@ -235,8 +220,6 @@ export const loadTopDoctors = (limit) => {
             }else{
                 dispatch(loadTopDoctorsFailed());   
             }
-
-    
         }catch(e){
             console.log(e);
             dispatch(loadTopDoctorsFailed()); 
@@ -264,8 +247,6 @@ export const getAllDoctors = () => {
             }else{
                 dispatch(getAllDoctorsFailed());   
             }
-
-    
         }catch(e){
             console.log(e);
             dispatch(loadTopDoctorsFailed()); 
@@ -295,9 +276,6 @@ export const createInfoDoctorStart = (infoDoctor) => {
                 dispatch(createInfoDoctorFailed());   
                 toast.warn("CREATE INFOR DOCTOR FAILED!");
             }
-            console.log(res)
-
-    
         }catch(e){
             dispatch(createInfoDoctorFailed()); 
             toast.warn("CREATE INFOR DOCTOR FAILED!");
@@ -326,9 +304,6 @@ export const editInfoDoctorStart = (infoDoctor) => {
                 dispatch({type: actionTypes.EDIT_INFO_DOCTOR_FAILED});   
                 toast.warn("EDIT DOCTOR INFORMATION FAILED!");
             }
-            console.log(res)
-
-    
         }catch(e){
             dispatch({type: actionTypes.EDIT_INFO_DOCTOR_FAILED}); 
             toast.warn("EDIT DOCTOR INFORMATION FAILED!");
@@ -352,6 +327,34 @@ export const getAllCodeTime = () => {
         }catch(e){
             dispatch({type: actionTypes.GET_ALLCODE_TIME_FAILED}); 
         }
+    }
+}
+
+export const getAllCodeDoctorMore = () => {
+    return async (dispatch, getState) => {
+        try{
+
+            let resPrice = await userService.getAllCodeService(ALLCODE_TYPE.PRICE);
+            let resPayment = await userService.getAllCodeService(ALLCODE_TYPE.PAYMENT);
+            let resProvince = await userService.getAllCodeService(ALLCODE_TYPE.PROVINCE);
+
+            if(resPrice && resPrice.errCode === 0 && resPayment && resPayment.errCode === 0 && resProvince && resProvince.errCode === 0){
+                let allCodeDoctorMore = {};
+                allCodeDoctorMore.prices = resPrice.data;
+                allCodeDoctorMore.payments = resPayment.data;
+                allCodeDoctorMore.provinces = resProvince.data;
+
+                dispatch({
+                    type: actionTypes.GET_ALLCODE_DOCTOR_MORE_SUCCESS,
+                    allCodeDoctorMore: allCodeDoctorMore
+                });
+            }else{
+                dispatch({type: actionTypes.GET_ALLCODE_DOCTOR_MORE_FAILED});   
+            }
+
+    
+        }catch(e){
+            dispatch({type: actionTypes.GET_ALLCODE_DOCTOR_MORE_FAILED});         }
     }
 }
 

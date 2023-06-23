@@ -6,6 +6,7 @@ import HomeHeader from '../../HomePage/HomeHeader';
 import { userService } from '../../../services';
 import { CommonUtils, LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
+import DoctorExtraInfor from './DoctorExtraInfor';
 
 class DetailDoctor extends Component {
 
@@ -32,8 +33,6 @@ class DetailDoctor extends Component {
                 })
 
             }
-            //console.log("res : ", res);
-            //console.log("image : ", CommonUtils.getUrlFromBase64(detailDoctor.image));
         }
 
     }
@@ -45,7 +44,6 @@ class DetailDoctor extends Component {
 
     render() {
         let {detailDoctor} = this.state;
-        console.log('detailDoctor : ' , detailDoctor);
 
         let nameVi = '', nameEn = ''; 
         if(detailDoctor && detailDoctor.positionData){
@@ -73,7 +71,9 @@ class DetailDoctor extends Component {
                         <div className='content-left'>
                             <DoctorSchedule doctorId={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}/>
                         </div>
-                        <div className='content-right'></div>
+                        <div className='content-right'>
+                            <DoctorExtraInfor doctorId={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}/>
+                        </div>
                     </div>
                     <div className='detail-infor-doctor'>
                         {detailDoctor && detailDoctor.doctorInformation && detailDoctor.doctorInformation.contentHTML &&

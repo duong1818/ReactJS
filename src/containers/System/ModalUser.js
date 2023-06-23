@@ -42,7 +42,6 @@ class ModalUser extends Component {
 
 
     componentDidMount() {
-        //console.log('call did mount', this.props)
     }
 
     componentDidUpdate(previousProps, previousState){
@@ -83,7 +82,6 @@ class ModalUser extends Component {
 
     }
     handleOnchanceInput = (event, id) => {
-        //console.log("event : ", event.target.value, id);
 
         // bad code :
         // this.state[id] = event.target.value;
@@ -111,7 +109,6 @@ class ModalUser extends Component {
             if(!this.state[arrInput[i]]){
                 isValid = false;
                 alert('Missing parameter: ' + arrInput[i]);
-                console.log('Missing parameter: ', arrInput[i]);
                 break;
             }
         }

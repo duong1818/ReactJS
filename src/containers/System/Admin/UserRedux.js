@@ -111,7 +111,6 @@ class UserRedux extends Component {
             })
         }
         if(prevProps.listUsers !== this.props.listUsers){
-            console.log("listUsers :" , this.props.listUsers);
             let copyState = {...this.state};
 
             copyState.action = manageActions.ADD;
@@ -139,8 +138,6 @@ class UserRedux extends Component {
             });
         }
 
-        console.log('did update: ', this.props)
-        console.log('did update this.state: ', this.state.user)
     }
 
     handleOnchangeImage = async (event) => {
@@ -152,7 +149,6 @@ class UserRedux extends Component {
             let copyUser = {...this.state.user};
 
             let base64 = await CommonUtils.getBase64(file);
-            console.log('base64: ', base64);
             copyUser['image'] = base64;
 
             const objectUrl = URL.createObjectURL(file);
@@ -192,7 +188,6 @@ class UserRedux extends Component {
             if(!this.state.user[arrInput[i]]){
                 isValid = false;
                 alert('Missing input: '+ arrInput[i]);
-                console.log('Missing input: ', arrInput[i]);
                 break;
             }
         }
@@ -208,7 +203,6 @@ class UserRedux extends Component {
             if(!this.state.user[arrInput[i]]){
                 isValid = false;
                 alert('Missing input: '+ arrInput[i]);
-                console.log('Missing input: ', arrInput[i]);
                 break;
             }
         }
@@ -218,8 +212,6 @@ class UserRedux extends Component {
     handleSaveUser = () => {
 
         try{
-
-            console.log('handleSaveUser this.props :', this.props);
 
             if(this.state.action === manageActions.ADD){
                 if(this.checkValidDataInput()){
@@ -245,7 +237,6 @@ class UserRedux extends Component {
 
             let copyUser = {...this.state.user}
             
-            //console.log('check user state', copyUser);
             copyUser.id = user.id;
             copyUser.email = user.email;
             copyUser.firstName = user.firstName;
@@ -278,8 +269,6 @@ class UserRedux extends Component {
         let {genderArr, roleArr, positionArr, action} = this.state;
         let {language, isLoadingGender}  = this.props;
 
-        //const { photoIndex, isOpen } = this.state;
-        // console.log('check UserRedux this.state: ', this.state);
         return (
             <div className='user-redux-container'>
                 <div className='title'>

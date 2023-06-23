@@ -94,6 +94,27 @@
         "create":"Create user",
         "update":"Update user"
     },
+    "manage-doctor":{
+        "title": "Create doctor information",
+        "choose-doctor": "Choose a doctor",
+        "choose-price": "Choose a price",
+        "choose-payment": "Choose a payment",
+        "choose-province": "Choose a province",
+        "introductory-information": "Introductory information",
+        "name-clinic": "Clinic's name",
+        "address-clinic": "Clinic's address",
+        "note": "note",
+        "create-infor": "Create information",
+        "update-infor": "Update information",
+        "selectedDoctor": "select a doctor",
+        "contentMarkdown": "input content of Markdown",
+        "contentHTML": "input content of HTML",
+        "selectedPrice": "select a price",
+        "selectedPayment": "select a payment",
+        "selectedProvince": "select a province",
+        "nameClinic": "input name of Clinic",
+        "addressClinic": "input address of Clinic"
+    },
     "manage-schedule": {
         "title": "Manage doctor's examination plan",
         "choose-doctor": "Choose a doctor",
@@ -188,6 +209,17 @@
             "no-schedule": "There are no appointments during this time, please choose another time!",
             "choose": "Choose",
             "book-free": "and book (free)"           
+        },
+        "extra":{
+            "text-address": "Address of examination",
+            "text-price": "Examination price:",
+            "view-detail": "See detail",
+            "payment": "The patient can pay the cost in the form of: ",
+            "hide-price": "Hide price list"
         }
+    },
+    "messages": {
+        "please":"Please "
     }
+
 }

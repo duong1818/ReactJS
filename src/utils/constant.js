@@ -41,4 +41,7 @@ export const ALLCODE_TYPE = {
     TIME: 'TIME',
     POSITION: 'POSITION',
     GENDER: 'GENDER',
+    PRICE: 'PRICE',
+    PAYMENT: 'PAYMENT',
+    PROVINCE: 'PROVINCE',
 }

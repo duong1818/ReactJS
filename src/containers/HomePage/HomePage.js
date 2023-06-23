@@ -14,7 +14,6 @@ import HomeFooter from './HomeFooter';
 class HomePage extends Component {
 
     render() {
-        //console.log('Duong check HomePage props:', this.props);
         let settings = {
             dots: false,
             infinite: false,

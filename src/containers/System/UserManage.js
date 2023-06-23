@@ -17,7 +17,6 @@ class UserManage extends Component {
         }
     }
     async componentDidMount() {
-        console.log('didmount', this.state);
         await this.getAllUsersFromReact();   
     }
 
@@ -53,7 +52,6 @@ class UserManage extends Component {
 
             let response = await userService.editUserService(data);
             if(response && response.errCode === 0){
-                console.log('edit ok');
                 this.setState({
                     isOpenModalUser: false
                 });
@@ -72,7 +70,6 @@ class UserManage extends Component {
         try{
             let response = await userService.createNewUserService(data);
             if(response && response.errCode === 0){
-                console.log('create new user Ok');
                 this.setState({
                     isOpenModalUser: false
                 })
@@ -103,7 +100,6 @@ class UserManage extends Component {
         try{
             let response = await userService.deleteUserService(id);
             if(response && response.errCode === 0){
-                console.log('delete user ok');
                 await this.getAllUsersFromReact();
             }else{
                 alert(response.errMessage); 
@@ -140,7 +136,6 @@ class UserManage extends Component {
      * @returns 
      */
     render() {
-        //console.log('Duong check userManage ', this.state);
         let arrUsers = this.state.arrUsers;
         return (
             <div className="users-container">

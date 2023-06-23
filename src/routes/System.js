@@ -9,7 +9,6 @@ import ManageDoctor from '../containers/System/Admin/ManageDoctor';
 
 class System extends Component {
     render() {
-        //console.log('Duong check isLoggedIn : ', this.props);
         const { systemMenuPath, isLoggedIn } = this.props;
         return (
             <React.Fragment>
@@ -30,7 +29,6 @@ class System extends Component {
 }
 
 const mapStateToProps = state => {
-    //console.log('Duong check state : ', state);
 
     return {
         systemMenuPath: state.app.systemMenuPath,

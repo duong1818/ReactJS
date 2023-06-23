@@ -100,8 +100,6 @@ class Login extends Component {
         const { username, password, loginError } = this.state;
         const { lang } = this.props;
 
-        console.log('duong check login props:', this.props);
-
         return (
             <div className="login-wrapper">
                 <div className="login-container">

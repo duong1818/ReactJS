@@ -96,6 +96,27 @@
         "create":"Thêm user",
         "update":"cập nhật user"
     },
+    "manage-doctor":{
+        "title": "Tạo thông tin bác sĩ",
+        "choose-doctor": "Chọn bác sĩ",
+        "choose-price": "Chọn giá khám",
+        "choose-payment": "Chọn phương thức thanh toán",
+        "choose-province": "Chọn tỉnh thành",
+        "introductory-information": "Thông tin giới thiệu",
+        "name-clinic": "Tên phòng khám",
+        "address-clinic": "Địa chỉ phòng khám",
+        "note": "ghi chú",
+        "create-infor": "Tạo thông tin",
+        "update-infor": "Sửa thông tin",
+        "selectedDoctor": "chọn Bác sĩ",
+        "contentMarkdown": "nhập nội dung Markdown",
+        "contentHTML": "nhập nội dung HTML",
+        "selectedPrice": "chọn giá khám bệnh",
+        "selectedPayment": "chọn phương pháp thanh toán",
+        "selectedProvince": "chọn tỉnh thành",
+        "nameClinic": "nhập tên bệnh viện",
+        "addressClinic": "nhập địa chỉ bệnh viện"
+    },
     "manage-schedule": {
         "title": "Quản lý kế hoạch khám bệnh của Bác sĩ",
         "choose-doctor": "Chọn bác sĩ",
@@ -191,6 +212,17 @@
             "choose": "Chọn",
             "book-free": "và đặt (miễn phí)"
 
+        },
+        "extra":{
+            "text-address": "Địa chỉ khám",
+            "text-price": "Giá khám:",
+            "view-detail": "Xem chi tiết",
+            "payment": "Nguời bệnh có thể thanh toán chi phí bằng hình thức: ",
+            "hide-price": "Ẩn bảng giá"
         }
+    },
+    "messages": {
+        "please":"Vui lòng "
     }
+
 }
