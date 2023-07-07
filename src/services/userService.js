@@ -59,8 +59,16 @@ const userService = {
     },
     getInforDoctorExtra(doctorId){
         return axios.get(`/api/get-infor-doctor-extra?doctorId=${doctorId}`);
-    }
-
+    },
+    createPatientBooking(patient){
+        return axios.post('/api/create-patient-booking', patient);
+    },
+    verifyBooking(token,doctorId){
+        return axios.post(`/api/verify-booking?token=${token}&doctorId=${doctorId}`);
+    },
+    createSpecialty(specialty){
+        return axios.post(`/api/create-specialty`, specialty);
+    },
 }
 
 export default userService;

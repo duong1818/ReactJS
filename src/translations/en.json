@@ -216,6 +216,21 @@
             "view-detail": "See detail",
             "payment": "The patient can pay the cost in the form of: ",
             "hide-price": "Hide price list"
+        },
+        "bookingModal": {
+            "title": "Information to book a medical appointment",
+            "examination-price": "Examination price:",
+            "fullName": "Fullname",
+            "phoneNumber": "Phone number",
+            "email": "Email",
+            "address": "Address",
+            "reason": "Reason for examination",
+            "date-birth": "Date of Birth",
+            "genders": "Genders",
+            "confirm":"Confirm",
+            "cancel": "Cancel",
+            "verify-email-success":"You have successfully confirmed your appointment!",
+            "verify-email-fail":"Appointment does not exist or has been confirmed!"
         }
     },
     "messages": {

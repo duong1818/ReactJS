@@ -1,0 +1,40 @@
+.intro-doctor {
+    display: flex;
+    .content-left {
+        width: 20%;
+        &.size-lg {
+            background: center center no-repeat;
+            width: 120px;
+            height: 120px;
+        }
+
+        &.size-sm{
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;    
+        }
+
+        border-radius: 50%;
+        margin: 10px 20px;
+
+    }
+    .content-right {
+        display: flex;
+        width: 80%;
+        //border: 1px solid blue;
+        flex-direction: column;
+        padding-left: 10px;
+
+        .up {
+            font-size: 20px;
+            font-weight: 600;
+        }
+        .down {
+            padding-top: 10px;
+
+        }
+
+    }
+}

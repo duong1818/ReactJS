@@ -219,6 +219,21 @@
             "view-detail": "Xem chi tiết",
             "payment": "Nguời bệnh có thể thanh toán chi phí bằng hình thức: ",
             "hide-price": "Ẩn bảng giá"
+        },
+        "bookingModal": {
+            "title": "Thông tin đặt lịch khám bệnh",
+            "examination-price": "Giá khám",
+            "fullName": "Họ và tên",
+            "phoneNumber": "Số điện thoại",
+            "email": "Địa chỉ Email",
+            "address": "Địa chỉ liên hệ",
+            "reason": "Lý do khám",
+            "date-birth": "Ngày tháng năm sinh",
+            "genders": "Giới tính",
+            "confirm":"Xác nhận",
+            "cancel": "Hủy",
+            "verify-email-success":"Bạn đã xác nhận lịch hẹn thành công!",
+            "verify-email-fail":"Lịch hẹn không tồn tại hoặc đã được xác nhận!"
         }
     },
     "messages": {

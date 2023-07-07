@@ -5,7 +5,8 @@ export const path = {
     LOG_OUT: '/logout',
     SYSTEM: '/system',
     DETAIL_DOCTOR: '/detail-doctor/:id',
-    DOCTOR: '/doctor'
+    DOCTOR: '/doctor',
+    VERIFY_EMAIL_BOOKING: '/verify-booking'
 };
 
 export const LANGUAGES = {
@@ -44,4 +45,11 @@ export const ALLCODE_TYPE = {
     PRICE: 'PRICE',
     PAYMENT: 'PAYMENT',
     PROVINCE: 'PROVINCE',
+}
+
+export const PATIENT_STATUS = {
+    NEW: 'S1',
+    CONFIRM: 'S2',
+    DONE: 'S3',
+    CANCEL: 'S4'
 }

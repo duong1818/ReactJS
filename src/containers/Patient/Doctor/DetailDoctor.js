@@ -7,6 +7,7 @@ import { userService } from '../../../services';
 import { CommonUtils, LANGUAGES } from '../../../utils';
 import DoctorSchedule from './DoctorSchedule';
 import DoctorExtraInfor from './DoctorExtraInfor';
+import ProfileDoctor from './ProfileDoctor';
 
 class DetailDoctor extends Component {
 
@@ -25,51 +26,31 @@ class DetailDoctor extends Component {
 
             let res = await userService.getDetailDoctor(this.props.match.params.id);
             
-
- 
             if(res && res.errCode === 0){
                 this.setState({
                     detailDoctor: res.inforDoctor
                 })
-
             }
         }
-
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps, prevState, snapshot) {
 
     }
 
 
     render() {
         let {detailDoctor} = this.state;
-
-        let nameVi = '', nameEn = ''; 
-        if(detailDoctor && detailDoctor.positionData){
-            nameVi = `${detailDoctor.positionData.valueVi}, ${detailDoctor.lastName} ${detailDoctor.firstName}`;
-            nameEn = `${detailDoctor.positionData.valueEn}, ${detailDoctor.firstName} ${detailDoctor.lastName}`;
-        }
+        //console.log("detailDoctor : ", detailDoctor);
         
         return (
             <div className='doctor-detail-screen'> 
                 <HomeHeader isShowBanner={false}/>
                 <div className="doctor-detail-container">
-                    <div className='intro-doctor'>
-                       <div className='content-left' style={{backgroundImage: `url(${detailDoctor && detailDoctor.image? detailDoctor.image : ''})`}}></div> 
-                       <div className='content-right'>
-                           <div className='up'>
-                                {this.props.language === LANGUAGES.VI ? nameVi?nameVi:'' : nameEn?nameEn:''}
-                           </div>
-                           <div className='down' >{detailDoctor && detailDoctor.doctorInformation && detailDoctor.doctorInformation.description && 
-                                <span>{detailDoctor.doctorInformation.description}</span>
-                           }</div>
-
-                       </div>
-                    </div>
+                    <ProfileDoctor detailDoctor={detailDoctor} displayDes={true} />
                     <div className='schedule-doctor'>
                         <div className='content-left'>
-                            <DoctorSchedule doctorId={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}/>
+                            <DoctorSchedule doctorId={detailDoctor && detailDoctor.id ? detailDoctor.id : -1} detailDoctor={detailDoctor}/>
                         </div>
                         <div className='content-right'>
                             <DoctorExtraInfor doctorId={detailDoctor && detailDoctor.id ? detailDoctor.id : -1}/>

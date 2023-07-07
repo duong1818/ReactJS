@@ -15,7 +15,7 @@ class ModalUser extends Component {
             address: '',
             phoneNumber: '',
             sex: '1',
-            roleId: 'R1'
+            role: 'R1'
         }
 
         //this.listenToEmitter();
@@ -32,7 +32,7 @@ class ModalUser extends Component {
     //             address: '',
     //             phoneNumber: '',
     //             sex: '1',
-    //             roleId: 'R1'
+    //             role: 'R1'
     
     //         })
     //         console.log('check listening event from parent data: ', user)
@@ -58,7 +58,7 @@ class ModalUser extends Component {
                     address: user.address,
                     phoneNumber: user.phoneNumber,
                     gender: user.gender,
-                    roleId: user.roleId
+                    role: user.role
                 })
             }else{
                 this.setState({
@@ -70,7 +70,7 @@ class ModalUser extends Component {
                     address: '',
                     phoneNumber: '',
                     gender: '1',
-                    roleId: 'R1'
+                    role: 'R1'
         
                 })
             }
@@ -104,7 +104,7 @@ class ModalUser extends Component {
 
     checkValidateInput = () => {
         let isValid = true;
-        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address', 'phoneNumber', 'sex', 'roleId'];
+        let arrInput = ['email', 'password', 'firstName', 'lastName', 'address', 'phoneNumber', 'sex', 'role'];
         for(let i = 0; i < arrInput.length; i++){
             if(!this.state[arrInput[i]]){
                 isValid = false;
@@ -170,7 +170,7 @@ class ModalUser extends Component {
                       </div>
                         <div className="input-container width-select">
                             <label>Role</label>
-                            <select name="roleId" onChange={(event) => {this.handleOnchanceInput(event, "roleId")}}  value={this.state.roleId} >
+                            <select name="role" onChange={(event) => {this.handleOnchanceInput(event, "role")}}  value={this.state.role} >
                                 <option value="R1">Admin</option>
                                 <option value="R2">Doctor</option>
                                 <option value="R3">Patient</option>
